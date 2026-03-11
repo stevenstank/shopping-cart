@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 import './Home.css';
 
 function Home() {
@@ -23,6 +24,7 @@ function Home() {
           <p>No hidden fees. The price you see is the price you pay.</p>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

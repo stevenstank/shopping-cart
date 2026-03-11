@@ -1,0 +1,27 @@
+.payment-section {
+  margin-top: 2rem;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background-color: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.payment-warning {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #e03030;
+  text-align: center;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.payment-qr {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  border-radius: 4px;
+}

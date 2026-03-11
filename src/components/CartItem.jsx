@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useCart } from '../context/CartContext';
+import { toINR } from '../utils/currency';
 import './CartItem.css';
 
 function CartItem({ item }) {
@@ -22,7 +23,7 @@ function CartItem({ item }) {
       <img src={item.image} alt={item.title} className="cart-item-image" />
       <div className="cart-item-details">
         <h3 className="cart-item-title">{item.title}</h3>
-        <p className="cart-item-price">${item.price.toFixed(2)}</p>
+        <p className="cart-item-price">₹{toINR(item.price)}</p>
         <div className="cart-item-controls">
           <button onClick={handleDecrement} aria-label="Decrease quantity">-</button>
           <span className="cart-item-quantity">{item.quantity}</span>
@@ -30,7 +31,7 @@ function CartItem({ item }) {
         </div>
       </div>
       <p className="cart-item-subtotal">
-        ${(item.price * item.quantity).toFixed(2)}
+        ₹{toINR(item.price * item.quantity)}
       </p>
     </div>
   );

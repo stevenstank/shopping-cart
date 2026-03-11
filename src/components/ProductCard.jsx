@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useCart } from '../context/CartContext';
+import { toINR } from '../utils/currency';
 import './ProductCard.css';
 
 function ProductCard({ product }) {
@@ -34,7 +35,7 @@ function ProductCard({ product }) {
       </div>
       <div className="product-info">
         <h3 className="product-title">{product.title}</h3>
-        <p className="product-price">${product.price.toFixed(2)}</p>
+        <p className="product-price">₹{toINR(product.price)}</p>
       </div>
       <div className="product-controls">
         <div className="quantity-control">

@@ -55,8 +55,8 @@ describe('Shop', () => {
   it('renders product prices', async () => {
     renderShop();
     await waitFor(() => {
-      expect(screen.getByText('$9.99')).toBeInTheDocument();
-      expect(screen.getByText('$19.99')).toBeInTheDocument();
+      expect(screen.getByText('₹829.17')).toBeInTheDocument();
+      expect(screen.getByText('₹1659.17')).toBeInTheDocument();
     });
   });
 

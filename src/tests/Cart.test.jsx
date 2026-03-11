@@ -112,59 +112,20 @@ describe('Cart', () => {
 
   it('displays the correct total price', async () => {
     renderCartWithItems([mockCartItem]);
-    expect(await screen.findByText('Total: $50.00')).toBeInTheDocument();
+    expect(await screen.findByText('Total: ₹4150.00')).toBeInTheDocument();
+  });
+
+  it('shows the Buy button', async () => {
+    renderCartWithItems([mockCartItem]);
+    expect(await screen.findByRole('button', { name: /buy/i })).toBeInTheDocument();
+  });
+
+  it('shows the payment section when Buy is clicked', async () => {
+    const user = userEvent.setup();
+    renderCartWithItems([mockCartItem]);
+    const buyBtn = await screen.findByRole('button', { name: /buy/i });
+    await user.click(buyBtn);
+    expect(screen.getByText(/IF YOU PAY YOU WONT GET THE ITEM/i)).toBeInTheDocument();
   });
 });
 
-
-describe('Cart', () => {
-  it('shows an empty state when the cart has no items', () => {
-    renderEmptyCart();
-    expect(screen.getByText('Your cart is empty')).toBeInTheDocument();
-  });
-
-  it('shows a link to the shop when empty', () => {
-    renderEmptyCart();
-    expect(screen.getByRole('link', { name: /go to shop/i })).toBeInTheDocument();
-  });
-
-  it('renders cart items when items exist', () => {
-    renderCartWithItems([mockCartItem]);
-    expect(screen.getByText('A Great Product')).toBeInTheDocument();
-  });
-
-  it('displays the quantity of each item', () => {
-    renderCartWithItems([mockCartItem]);
-    expect(screen.getByText('2')).toBeInTheDocument();
-  });
-
-  it('increases item quantity when + is clicked', async () => {
-    const user = userEvent.setup();
-    renderCartWithItems([mockCartItem]);
-    const incrementBtn = screen.getByRole('button', { name: /increase quantity/i });
-    await user.click(incrementBtn);
-    expect(screen.getByText('3')).toBeInTheDocument();
-  });
-
-  it('decreases item quantity when - is clicked', async () => {
-    const user = userEvent.setup();
-    renderCartWithItems([mockCartItem]);
-    const decrementBtn = screen.getByRole('button', { name: /decrease quantity/i });
-    await user.click(decrementBtn);
-    expect(screen.getByText('1')).toBeInTheDocument();
-  });
-
-  it('removes item from cart when quantity reaches zero', async () => {
-    const user = userEvent.setup();
-    renderCartWithItems([{ ...mockCartItem, quantity: 1 }]);
-    expect(screen.getByText('A Great Product')).toBeInTheDocument();
-    const decrementBtn = screen.getByRole('button', { name: /decrease quantity/i });
-    await user.click(decrementBtn);
-    expect(screen.queryByText('A Great Product')).not.toBeInTheDocument();
-  });
-
-  it('displays the correct total price', () => {
-    renderCartWithItems([mockCartItem]);
-    expect(screen.getByText('Total: $50.00')).toBeInTheDocument();
-  });
-});
