@@ -1,0 +1,64 @@
+.home {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.home-hero {
+  text-align: center;
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3rem;
+}
+
+.home-hero h1 {
+  font-size: 2.4rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.home-hero p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+.home-cta {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #111;
+  font-weight: 600;
+  padding: 0.7rem 1.8rem;
+  border-radius: 4px;
+  transition: background-color 0.15s;
+}
+
+.home-cta:hover {
+  background-color: var(--accent-hover);
+  color: #111;
+}
+
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+
+.feature-card h2 {
+  font-size: 1rem;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
